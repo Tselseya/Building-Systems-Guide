@@ -585,9 +585,9 @@
 
   /* Group of screenshots inside the placeholder */
 .screenshot-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 images side by side */
-  gap: 16px;
+  display: flex;
+  flex-direction: column;  /* stack screenshots top to bottom */
+  gap: 16px;               /* even spacing between screenshots */
 }
 
 /* Each figure (image + caption) */
@@ -595,17 +595,26 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      /* center caption under image */
+  width: 100%;
 }
 
-/* Make images fill their figure while keeping aspect ratio */
+/* Make each image as wide as the screenshot placeholder */
 .screenshot-group img {
-  width: 100%;
-  height: 100%;
-  max-height: 260px;      /* tweak to match the placeholder height you want */
-  object-fit: cover;      /* fill the box, crop a bit if needed */
+  width: 100%;             /* fill the width of the placeholder */
+  height: auto;            /* keep aspect ratio */
+  max-height: 260px;       /* optional: limit how tall each one is */
+  object-fit: cover;       /* crop a bit if needed; use 'contain' for no cropping */
   border-radius: 6px;
   display: block;
+}
+
+/* Caption styling */
+.screenshot-group figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
 }
 
 /* Caption styling */
