@@ -584,10 +584,13 @@
   .screenshot-icon { font-size: 28px; margin-bottom: 8px; }
 
   /* Group of screenshots inside the placeholder */
-.screenshot-group {
-  display: flex;
-  flex-direction: column;  /* stack screenshots top to bottom */
-  gap: 16px;               /* even spacing between screenshots */
+.screenshot-group img {
+  width: 100%;        /* fill the placeholder width */
+  height: auto;       /* let height adjust to keep aspect ratio */
+  /* remove max-height if you had it */
+  object-fit: contain;/* show full image, no cropping */
+  border-radius: 6px;
+  display: block;
 }
 
 /* Each figure (image + caption) */
